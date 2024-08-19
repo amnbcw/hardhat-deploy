@@ -1,3 +1,7 @@
+cache
+ignition/deployments
+artifacts
+
 # Logs
 logs
 *.log
