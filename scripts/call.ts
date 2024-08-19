@@ -17,6 +17,12 @@ async function main() {
 
   const cid = await lock.getChainId();
   console.log('Chain ID from contract:', cid.toString());
+
+  const cidp1 = await lock.getChainIdPlusOne();
+  console.log('Chain ID + 1 from contract:', cidp1.toString());
+
+  const greeting = await lock.getGreetingWithChainId();
+  console.log('Greeting from contract:', greeting);
 }
 
 main()

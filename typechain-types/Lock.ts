@@ -21,17 +21,38 @@ import type {
 
 export interface LockInterface extends Interface {
   getFunction(
-    nameOrSignature: "getChainId" | "owner" | "withdraw"
+    nameOrSignature:
+      | "getChainId"
+      | "getChainIdPlusOne"
+      | "getGreetingWithChainId"
+      | "owner"
+      | "withdraw"
   ): FunctionFragment;
 
   encodeFunctionData(
     functionFragment: "getChainId",
     values?: undefined
   ): string;
+  encodeFunctionData(
+    functionFragment: "getChainIdPlusOne",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getGreetingWithChainId",
+    values?: undefined
+  ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "withdraw", values?: undefined): string;
 
   decodeFunctionResult(functionFragment: "getChainId", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getChainIdPlusOne",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getGreetingWithChainId",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 }
@@ -81,6 +102,10 @@ export interface Lock extends BaseContract {
 
   getChainId: TypedContractMethod<[], [bigint], "view">;
 
+  getChainIdPlusOne: TypedContractMethod<[], [bigint], "view">;
+
+  getGreetingWithChainId: TypedContractMethod<[], [string], "view">;
+
   owner: TypedContractMethod<[], [string], "view">;
 
   withdraw: TypedContractMethod<[], [void], "nonpayable">;
@@ -92,6 +117,12 @@ export interface Lock extends BaseContract {
   getFunction(
     nameOrSignature: "getChainId"
   ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "getChainIdPlusOne"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "getGreetingWithChainId"
+  ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "owner"
   ): TypedContractMethod<[], [string], "view">;
